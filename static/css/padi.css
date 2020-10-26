@@ -1,0 +1,191 @@
+*,
+*::after,
+*::before {
+ padding: 0;
+ margin: 0;
+ box-sizing: border-box;
+}
+
+body {
+ font-family: Verdana, Geneva, Tahoma, sans-serif;
+ min-height: 100vh;
+}
+
+nav {
+ background-color: #fff;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+}
+
+.app-title {
+ margin-left: 1rem;
+}
+
+.navbar {
+ padding: 1.25rem;
+ display: flex;
+ justify-content: end;
+ align-items: center;
+ gap: 1.25rem;
+}
+
+.nav-item {
+ list-style: none;
+ transition: transform 0.2s ease;
+}
+
+.nav-link {
+ text-decoration: none;
+ color: rgb(50, 50, 0);
+}
+
+.nav-link.active {
+ color: rgb(0, 0, 0);
+}
+
+.nav-item:hover {
+ transform: scale(1.2);
+}
+
+.header-banner {
+ height: 13rem;
+ width: 100%;
+ object-fit: cover;
+}
+
+main {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ gap: 1rem;
+ width: 100%;
+ margin: 1rem auto;
+}
+
+form {
+ width: 90%;
+ padding: 1rem;
+ display: grid;
+ align-items: center;
+ gap: 1rem;
+ border: 2px greenyellow dashed;
+}
+
+.result {
+ display: grid;
+ padding: 1rem;
+ align-items: center;
+ justify-items: start;
+ gap: 1rem;
+ border: 2px greenyellow dashed;
+ width: 90%;
+}
+
+label {
+ cursor: pointer;
+ display: grid;
+ gap: 0.75rem;
+}
+
+input[type="file"] {
+ cursor: pointer;
+ padding: 0.5rem;
+ border: 1px solid mediumseagreen;
+ border-radius: 0.25rem;
+}
+
+.upload-btn {
+ cursor: pointer;
+ border: none;
+ padding: 0.5em;
+ font-size: 12pt;
+ border-radius: 0.25rem;
+ background: mediumseagreen;
+ color: white;
+}
+
+.upload-btn:hover {
+ background-color: darkgreen;
+}
+
+input:focus,
+button:focus {
+ outline: none;
+}
+
+.loading {
+ display: inline-block;
+ background: linear-gradient(greenyellow, yellowgreen);
+ width: 85%;
+ text-align: center;
+ padding: 1rem;
+}
+
+.img-uploaded {
+ max-width: 256px;
+ max-height: 256px;
+}
+
+.result-box {
+ width: auto;
+ padding: 0.5rem;
+ display: grid;
+ gap: 0.5rem;
+}
+
+.result-title {
+ display: inline-block;
+ padding: 0 0.5rem 0.5rem 0;
+ border-bottom: 1px solid;
+}
+
+.instruction {
+ width: 80%;
+ margin: auto;
+}
+
+@media screen and (min-width: 580px) {
+ .result {
+  grid-template-columns: auto auto;
+  align-items: flex-start;
+ }
+ .result-box {
+  grid-template: 1.6em / auto;
+ }
+}
+
+@media screen and (min-width: 640px) {
+ main {
+  width: 85%;
+  /* background-color: red; */
+ }
+}
+
+@media screen and (min-width: 768px) {
+ main {
+  width: 75%;
+  /* background-color: red; */
+ }
+
+ form {
+  grid-template-columns: 0.75fr auto;
+ }
+
+ .upload-btn {
+  margin-top: 1.75rem;
+ }
+}
+
+@media screen and (min-width: 1024px) {
+ main {
+  width: 65%;
+ }
+}
+
+@media screen and (min-width: 1280px) {
+ main {
+  width: 55%;
+ }
+}

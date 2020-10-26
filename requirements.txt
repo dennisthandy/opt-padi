@@ -1,0 +1,7 @@
+gunicorn
+Django
+django-heroku
+djangorestframework
+django-cors-headers
+opencv-python
+tensorflow-cpu
