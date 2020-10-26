@@ -4,4 +4,4 @@ django-heroku
 djangorestframework
 django-cors-headers
 tensorflow-cpu
-opencv-python
+opencv-python-headless
