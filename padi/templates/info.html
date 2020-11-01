@@ -1,0 +1,43 @@
+{% load static %}
+{% include './layout/header.html' %}
+<div class="container">
+    <div class="info">
+        <span style="margin-left: -20px;">Informasi:</span>
+        <ol style="margin: 1rem 0;">
+            <p style="margin-left: -20px;">Sistem ini mampu mendeteksi hingga 4 OPT diantaranya:</p>
+            <li>Bercak Daun Coklat (<i>Brown Spot</i>)</li>
+            <li>Sehat (<i>Healthy</i>)</li>
+            <li>Hispa</li>
+            <li>Blas Daun (<i>Leaf Blast</i>)</li>
+        </ol>
+    </div>
+
+    <div class="display-data">
+        <span>Dataset:</span>
+        <div class="datasets">
+            <label for="brownspot" class="data">
+                Brown Spot
+                <img src="{% static 'img/brownspot.png' %}" alt="" srcset="" class="img-data">
+            </label>
+            <label for="healthy" class="data">
+                Healthy
+                <img src="{% static 'img/healthy.png' %}" alt="" srcset="" class="img-data">
+            </label>
+            <label for="hispa" class="data">
+                Hispa
+                <img src="{% static 'img/hispa.png' %}" alt="" srcset="" class="img-data">
+            </label>
+            <label for="leafblast" class="data">
+                Leaf Blast
+                <img src="{% static 'img/leafblast.png' %}" alt="" srcset="" class="img-data">
+            </label>
+        </div>
+    </div>
+
+    <div class="display-acc">
+        <p>Diagram Akurasi Pengujian:</p>
+        <img src="{% static 'img/eachAccuracy.png' %}" alt="" srcset="" class="img-acc">
+    </div>
+</div>
+
+{% include './layout/footer.html' %}

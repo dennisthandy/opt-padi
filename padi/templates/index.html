@@ -1,87 +1,70 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Identifikasi OPT</title>
-    <link rel="stylesheet" href="{% static 'css/padi.css' %}">
-</head>
-<body>
-    
+{% include './layout/header.html' %}
 
-    <div class="container">
-        <nav>
-            <div class="nav-brand">
-                <strong class="app-title">Indentifikasi OPT Tanaman Padi</strong>
-            </div>
-            <ul class="navbar">
-                <li class="nav-item"><a href="/" class="nav-link active">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Tentang</a></li>
-            </ul>
-        </nav>
-        
-        <header>
-            <img class="header-banner" src="{% static 'img/header-banner.jpg' %}" alt="header-banner">
-        </header>
+<main class="container">
+    <form method="POST" enctype="multipart/form-data" class="form">{% csrf_token %}
+        <label for="gambar" class="input-group">Pilih gambar daun padi.
+            <input type="file" name="gambar" id="gambar" required>
+        </label>
+        <button type="submit" class="upload-btn">Identifikasi</button>
+    </form>
 
-        <main>
-            <!-- <div class="dataset">
+    <span class="loading">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon icon--loading">
+            <g data-name="Layer 2">
+                <g data-name="loader">
+                    <rect width="24" height="24" transform="rotate(180 12 12)" opacity="0" />
+                    <path d="M12 2a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0V3a1 1 0 0 0-1-1z" />
+                    <path d="M21 11h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2z" />
+                    <path d="M6 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h2a1 1 0 0 0 1-1z" />
+                    <path d="M6.22 5a1 1 0 0 0-1.39 1.47l1.44 1.39a1 1 0 0 0 .73.28 1 1 0 0 0 .72-.31 1 1 0 0 0 0-1.41z" />
+                    <path
+                        d="M17 8.14a1 1 0 0 0 .69-.28l1.44-1.39A1 1 0 0 0 17.78 5l-1.44 1.42a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.31z" />
+                    <path d="M12 18a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1z" />
+                    <path d="M17.73 16.14a1 1 0 0 0-1.39 1.44L17.78 19a1 1 0 0 0 .69.28 1 1 0 0 0 .72-.3 1 1 0 0 0 0-1.42z" />
+                    <path
+                        d="M6.27 16.14l-1.44 1.39a1 1 0 0 0 0 1.42 1 1 0 0 0 .72.3 1 1 0 0 0 .67-.25l1.44-1.39a1 1 0 0 0-1.39-1.44z" />
+                </g>
+            </g>
+        </svg>Sedang diproses, mohon tunggu...
+    </span> 
 
-            </div> -->
-            <form method="POST" enctype="multipart/form-data" class="form">{% csrf_token %}
-                <label for="gambar">Pilih gambar daun padi.
-                    <input type="file" name="gambar" id="gambar" required>
-                </label>
-                <button type="submit" class="upload-btn">Identifikasi</button>
-            </form>
-            {% if url %}
-            <div class="result">
-                <div class="result-image result-box">
-                    <span class="result-title">Gambar:</span>
-                    <img class="img-uploaded" src="{{ url }}" alt="">
-                </div>
-                <div class="result-label result-box">
-                    <span class="result-title">Nama OPT:</span>
-                    <strong>{{ label }}</strong>
-                </div>
-            </div>
-            {% else %}
-            <div class="instruction">
-                <span style="margin-left: -20px;">Petunjuk:</span>
-                <ol style="margin: 1rem 0;">
-                    <li>Pilih gambar daun padi.</li>
-                    <li>Disarankan untuk menggunakan gambar dengan ukuran file dibawah 1M dan ukuran gambar 256x256 piksel.</li>
-                    <li>Kemudian klik tombol Identifikasi.</li>
-                    <li>Tunggu hingga hasil indentifikasi tampil.</li>
-                </ol>
-                <span style="margin: 1rem 0px; display: none;" class="loading">Sedang diproses, mohon tunggu...</span>
-                <span style="margin-left: -20px;">Informasi:</span>
-                <ol style="margin: 1rem 0;">
-                    <p style="margin-left: -20px;">Sistem ini mampu mendeteksi hingga 4 OPT diantaranya:</p>
-                    <li>Bercak Daun Coklat (<i>Brown Spot</i>)</li>
-                    <li>Sehat (<i>Healthy</i>)</li>
-                    <li>Hispa</li>
-                    <li>Blas Daun (<i>Leaf Blast</i>)</li>
-                </ol>
-            </div>
-            {% endif %}            
-        </main>
-        
+    {% if url %}
+    <div class="result">
+        <div class="result-image result-box">
+            <span class="result-title">Gambar:</span>
+            <img class="img-uploaded" src="{{ url }}" alt="">
+        </div>
+        <div class="result-label result-box">
+            <span class="result-title">Nama OPT:</span>
+            <strong>{{ label }}</strong>
+        </div>
     </div>
+    {% else %}
+    <div class="instruction">
+        <span style="margin-left: -20px;">Petunjuk:</span>
+        <ol style="margin: 1rem 0;">
+            <li>Pilih gambar daun padi.</li>
+            <li>Disarankan untuk menggunakan gambar dengan ukuran file dibawah 1M dan ukuran gambar 256x256 piksel.</li>
+            <li>Kemudian klik tombol Identifikasi.</li>
+            <li>Tunggu hingga hasil indentifikasi tampil.</li>
+        </ol>
+    </div>
+    {% endif %}
 
-    <script>
-        const btn = document.querySelector('.upload-btn')
-        const loading = document.querySelector('.loading')
-        const form = document.querySelector('.form')
+</main>
 
+<script>
+    const btn = document.querySelector('.upload-btn')
+    const loading = document.querySelector('.loading')
+    const form = document.querySelector('.form')
 
-        form.addEventListener('submit', showLoading)
+    form.addEventListener('submit', showLoading)
 
-        function showLoading(){
-            loading.style.display = 'block';
-        }
+    function showLoading() {
+        loading.classList.add('open');
+    }
 
-    </script>
-</body>
-</html>
+</script>
+
+{% include './layout/footer.html' %}

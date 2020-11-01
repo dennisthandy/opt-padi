@@ -16,7 +16,14 @@ def index(request):
     response = {}
     if request.method == 'POST':
         response = upload(request).data
+    response['path'] = request.get_full_path()
     return render(request, 'index.html', response);
+
+def info(request):
+    return render(request, 'info.html', { 'path': request.get_full_path() })
+
+def about(request):
+    return render(request, 'about.html', { 'path': request.get_full_path() });
 
 @api_view(['POST'])
 def upload(request):

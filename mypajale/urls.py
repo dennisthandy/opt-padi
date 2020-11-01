@@ -24,6 +24,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', padi_view.index),
+    path('info/', padi_view.info),
+    path('about/', padi_view.about),
     path('api/padi/upload/', padi_view.upload),
 ]
 

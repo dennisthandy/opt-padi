@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identifikasi OPT</title>
+    <link rel="stylesheet" href="{% static 'css/padi.css' %}">
+</head>
+
+<body>
+    <nav class="navigation">
+        <div class="menu">
+            <div class="humberger"></div>
+        </div>
+        <div class="brand">
+            <strong>Identifikasi OPT Padi</strong>
+        </div>
+        <ul class="real-nav">
+            <li class="nav-item {% if path == '/' %} active {% endif %}">
+                <a href="/" class="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon icon--home">
+                        <g data-name="Layer 2">
+                            <g data-name="home">
+                                <rect width="24" height="24" opacity="0" />
+                                <path
+                                    d="M20.42 10.18L12.71 2.3a1 1 0 0 0-1.42 0l-7.71 7.89A2 2 0 0 0 3 11.62V20a2 2 0 0 0 1.89 2h14.22A2 2 0 0 0 21 20v-8.38a2.07 2.07 0 0 0-.58-1.44zM10 20v-6h4v6zm9 0h-3v-7a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v7H5v-8.42l7-7.15 7 7.19z" />
+                            </g>
+                        </g>
+                    </svg>
+                    <span class="icon--text">Beranda</span>
+                </a>
+            </li>
+            <li class="nav-item nav-item--hidden {% if path == '/info/' %} active {% endif %}">
+                <a href="/info" class="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon">
+                        <g data-name="Layer 2">
+                            <g data-name="info">
+                                <rect width="24" height="24" transform="rotate(180 12 12)" opacity="0" />
+                                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" />
+                                <circle cx="12" cy="8" r="1" />
+                                <path d="M12 10a1 1 0 0 0-1 1v5a1 1 0 0 0 2 0v-5a1 1 0 0 0-1-1z" />
+                            </g>
+                        </g>
+                    </svg>
+                    <span>Informasi</span>
+                </a>
+            </li>
+            <li class="nav-item nav-item--hidden {% if path == '/about/' %} active {% endif %}">
+                <a href="/about" class="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon">
+                        <g data-name="Layer 2">
+                            <g data-name="menu-arrow-circle">
+                                <rect width="24" height="24" transform="rotate(180 12 12)" opacity="0" />
+                                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" />
+                                <path
+                                    d="M12 6a3.5 3.5 0 0 0-3.5 3.5 1 1 0 0 0 2 0A1.5 1.5 0 1 1 12 11a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-1.16A3.49 3.49 0 0 0 12 6z" />
+                                <circle cx="12" cy="17" r="1" />
+                            </g>
+                        </g>
+                    </svg>
+                    <span>Tentang</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="drawer">
+        <span class="close-drawer"></span>
+        <ul class="navbar">
+            <li class="nav-item">
+                <a href="/info" class="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon">
+                        <g data-name="Layer 2">
+                            <g data-name="info">
+                                <rect width="24" height="24" transform="rotate(180 12 12)" opacity="0" />
+                                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" />
+                                <circle cx="12" cy="8" r="1" />
+                                <path d="M12 10a1 1 0 0 0-1 1v5a1 1 0 0 0 2 0v-5a1 1 0 0 0-1-1z" />
+                            </g>
+                        </g>
+                    </svg>
+                    <span>Informasi</span> 
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/about" class="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon">
+                        <g data-name="Layer 2">
+                            <g data-name="menu-arrow-circle">
+                                <rect width="24" height="24" transform="rotate(180 12 12)" opacity="0" />
+                                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" />
+                                <path
+                                    d="M12 6a3.5 3.5 0 0 0-3.5 3.5 1 1 0 0 0 2 0A1.5 1.5 0 1 1 12 11a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-1.16A3.49 3.49 0 0 0 12 6z" />
+                                <circle cx="12" cy="17" r="1" />
+                            </g>
+                        </g>
+                    </svg>
+                    <span>Tentang</span> 
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <header>
+        <img class="header-banner" src="{% static 'img/header-banner.jpg' %}" alt="header-banner">
+    </header>
