@@ -1,20 +1,8 @@
-<script>
-    const menu = document.querySelector(".menu");
-    const drawer = document.querySelector(".drawer");
-    const closeDrawer = document.querySelector('.close-drawer');
-
-    menu.addEventListener('click', showDrawer);
-    closeDrawer.addEventListener('click', () => {
-        drawer.classList.remove('open')
-    })
-
-    function showDrawer() {
-        drawer.classList.add('open')
-        if (document.body.clientHeight > 740) {
-            drawer.style.height = (document.body.clientHeight + 25) + 'px';
-        }
-    }
-</script>
+{% load static %}
+    <script src="{% static 'js/script.js' %}"></script>
+    {% if path == '/' %} <script src="{% static 'js/home.js' %}"></script> {% endif %}
+    {% if path == '/info/' %} <script src="{% static 'js/info.js' %}"></script> {% endif %}
+    {% if path == '/about/' %} <script src="{% static 'js/about.js' %}"></script> {% endif %}
 </body>
 
 </html>

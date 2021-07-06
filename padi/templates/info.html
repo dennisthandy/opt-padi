@@ -1,42 +1,54 @@
 {% load static %}
 {% include './layout/header.html' %}
 <div class="container">
-    <div class="info">
-        <span style="margin-left: -20px;">Informasi:</span>
-        <ol style="margin: 1rem 0;">
-            <p style="margin-left: -20px;">Sistem ini mampu mendeteksi hingga 4 OPT diantaranya:</p>
-            <li>Bercak Daun Coklat (<i>Brown Spot</i>)</li>
-            <li>Sehat (<i>Healthy</i>)</li>
+    <!-- information -->
+    <div class="information">
+        <h1 class="heading">Informasi</h1>
+        <p class="information__desc">Sistem ini mampu mendeteksi hingga 4 OPT diantaranya:</p>
+        <ul class="information__list">
+            <li>Bercak Daun Coklat (<span>Brown Spot</span>)</li>
+            <li>Sehat (<span>Healthy</span>)</li>
             <li>Hispa</li>
-            <li>Blas Daun (<i>Leaf Blast</i>)</li>
-        </ol>
+            <li>Blas Daun (<span>Leaf Blast</span>)</li>
+        </ul>
     </div>
-
-    <div class="display-data">
-        <span>Dataset:</span>
-        <div class="datasets">
-            <label for="brownspot" class="data">
-                Brown Spot
-                <img src="{% static 'img/brownspot.png' %}" alt="" srcset="" class="img-data">
-            </label>
-            <label for="healthy" class="data">
-                Healthy
-                <img src="{% static 'img/healthy.png' %}" alt="" srcset="" class="img-data">
-            </label>
-            <label for="hispa" class="data">
-                Hispa
-                <img src="{% static 'img/hispa.png' %}" alt="" srcset="" class="img-data">
-            </label>
-            <label for="leafblast" class="data">
-                Leaf Blast
-                <img src="{% static 'img/leafblast.png' %}" alt="" srcset="" class="img-data">
-            </label>
+    <!-- datasets -->
+    <div class="datasets">
+        <h2 class="heading">Dataset</h2>
+        <p class="datasets__desc">Berikut ini contoh dataset setiap kelas: </p>
+        <div class="datasets__list">
+            <div class="datasets__item">
+                <p class="datasets__label">Brown Spot</p>
+                <img src="{% static 'img/brownspot.png' %}" alt="Brown Spot" srcset="" class="datasets__img">
+            </div>
+            <div class="datasets__item">
+                <p class="datasets__label">Healthy</p>
+                <img src="{% static 'img/healthy.png' %}" alt="Healthy" srcset="" class="datasets__img">
+            </div>
+            <div class="datasets__item">
+                <p class="datasets__label">Hispa</p>
+                <img src="{% static 'img/hispa.png' %}" alt="Hispa" srcset="" class="datasets__img">
+            </div>
+            <div class="datasets__item">
+                <p class="datasets__label">Leaf Blast<p>
+                <img src="{% static 'img/leafblast.png' %}" alt="Leaf Blast" srcset="" class="datasets__img">
+            </div>
         </div>
     </div>
-
-    <div class="display-acc">
-        <p>Diagram Akurasi Pengujian:</p>
-        <img src="{% static 'img/eachAccuracy.png' %}" alt="" srcset="" class="img-acc">
+    <!-- akurasi -->
+    <div class="accuracy">
+        <h3 class="heading">Akurasi</h3>
+        <p class="accuracy__desc">Berikut ini merupakan Diagram F1 Score tiap kelas dari proses pengujian dimasing-masing metode:</p>
+        <div class="accuracy__box">
+            <div class="accuracy__item">
+                <p class="accuracy__title">CNN (<span>Convolutional Neural Network</span>)</p>
+                <img src="{% static 'img/cnn_diagram.png' %}" alt="Akurasi" srcset="" class="accuracy__img">
+            </div>
+            <div class="accuracy__item">
+                <p class="accuracy__title"><span>Feature Learning</span> CNN + LVQ (<span>Learning Vector Quantization</span>)</p>
+                <img src="{% static 'img/lvq_diagram.png' %}" alt="Akurasi" srcset="" class="accuracy__img">
+            </div>
+        </div>
     </div>
 </div>
 

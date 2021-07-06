@@ -2,15 +2,25 @@
 {% include './layout/header.html' %}
 
 <main class="container">
+    <!-- form -->
+    <h1 class="heading">Unggah Gambar Daun Padi.</h1>
     <form method="POST" enctype="multipart/form-data" class="form">{% csrf_token %}
-        <label for="gambar" class="input-group">Pilih gambar daun padi.
-            <input type="file" name="gambar" id="gambar" required>
-        </label>
-        <button type="submit" class="upload-btn">Identifikasi</button>
+        <div class="form__group">
+            <input class="form__input--file" type="file" name="gambar" id="gambar" required>
+            <label for="gambar" class="form__label">
+                <img src="{% static 'icons/upload.svg' %}" alt="upload" class="form__icon form__icon--upload">
+                <span>Pilih Gambar</span>
+            </label>
+        </div>
+        <button type="submit" class="form__submit">
+            <img src="{% static 'icons/search.svg' %}" alt="search" class="form__icon form__icon--search">
+            <span>Identifikasi</span>
+        </button>
     </form>
 
-    <span class="loading">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon icon--loading">
+    <!-- loading -->
+    <p class="loading hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="loading--icon">
             <g data-name="Layer 2">
                 <g data-name="loader">
                     <rect width="24" height="24" transform="rotate(180 12 12)" opacity="0" />
@@ -26,45 +36,58 @@
                         d="M6.27 16.14l-1.44 1.39a1 1 0 0 0 0 1.42 1 1 0 0 0 .72.3 1 1 0 0 0 .67-.25l1.44-1.39a1 1 0 0 0-1.39-1.44z" />
                 </g>
             </g>
-        </svg>Sedang diproses, mohon tunggu...
-    </span> 
+        </svg>
+        <span>Sedang diproses, mohon tunggu...</span>
+    </p> 
 
     {% if url %}
     <div class="result">
-        <div class="result-image result-box">
-            <span class="result-title">Gambar:</span>
-            <img class="img-uploaded" src="{{ url }}" alt="">
+        <h2 class="heading heading--result">Hasil Identifikasi</h2>
+        <div class="result__list">
+            <p class="result__title">CNN (<span>Convolutional Neural Network</span>)</p>
+            <div class="result__item">
+                <p class="result__label">Gambar: </p>
+                <img class="result__data result__data--img" src="{{ url }}" alt="uploaded">
+                <!-- <img class="result__data result__data--img" src="{% static 'img/header-banner.jpg' %}" alt="uploaded"> -->
+            </div>
+            <div class="result__item">
+                <p class="result__label">Nama OPT: </p>
+                <p class="result__data result__data--identifier"><strong>{{ label.cnn }}</strong></p>
+            </div>
+            <div class="result__item">
+                <p class="result__label">Deskripsi: </p>
+                <p class="result__data result__data--desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate nobis excepturi officia rem repudiandae voluptates perspiciatis? Sunt obcaecati dolore quia eaque. Sint ut provident minus officia molestiae aperiam, odit dignissimos.</p>
+            </div>
         </div>
-        <div class="result-label result-box">
-            <span class="result-title">Nama OPT:</span>
-            <strong>{{ label }}</strong>
+        <div class="result__list">
+            <p class="result__title">Feature Learning CNN + LVQ (<span>Learning Vector Quantization</span>)</p>
+            <div class="result__item">
+                <p class="result__label">Gambar: </p>
+                <img class="result__data result__data--img" src="{{ url }}" alt="uploaded">
+                <!-- <img class="result__data result__data--img" src="{% static 'img/header-banner.jpg' %}" alt="uploaded"> -->
+            </div>
+            <div class="result__item">
+                <p class="result__label">Nama OPT: </p>
+                <p class="result__data result__data--identifier"><strong>{{ label.lvq }}</strong></p>
+            </div>
+            <div class="result__item">
+                <p class="result__label">Deskripsi: </p>
+                <p class="result__data result__data--desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate nobis excepturi officia rem repudiandae voluptates perspiciatis? Sunt obcaecati dolore quia eaque. Sint ut provident minus officia molestiae aperiam, odit dignissimos.</p>
+            </div>
         </div>
     </div>
+
     {% else %}
     <div class="instruction">
-        <span style="margin-left: -20px;">Petunjuk:</span>
-        <ol style="margin: 1rem 0;">
+        <p class="instruction__title">Petunjuk:</p>
+        <ul class="instruction__list">
             <li>Pilih gambar daun padi.</li>
-            <li>Disarankan untuk menggunakan gambar dengan ukuran file dibawah 1M dan ukuran gambar 256x256 piksel.</li>
             <li>Kemudian klik tombol Identifikasi.</li>
             <li>Tunggu hingga hasil indentifikasi tampil.</li>
-        </ol>
+        </ul>
     </div>
     {% endif %}
 
 </main>
-
-<script>
-    const btn = document.querySelector('.upload-btn')
-    const loading = document.querySelector('.loading')
-    const form = document.querySelector('.form')
-
-    form.addEventListener('submit', showLoading)
-
-    function showLoading() {
-        loading.classList.add('open');
-    }
-
-</script>
 
 {% include './layout/footer.html' %}

@@ -9,7 +9,7 @@ from django.conf import settings
 import os
 
 from helper.create_data import create_data
-from helper.test_data import predict
+from helper.identify import cnn_predict, lvq_predict
 
 # Create your views here.
 def index(request):
@@ -36,12 +36,13 @@ def upload(request):
 
         data = create_data(file_to_test)
 
-        result = predict(data)
+        cnn_result = cnn_predict(data['cnn'])
+        lvq_result = lvq_predict(data['lvq'])
     
         return Response({
             'message': 'ok', 
             'url': 'http://'+ request.META['HTTP_HOST'] + fs.url(filename), 
-            'label': result, 
+            'label': {'cnn': cnn_result, 'lvq': lvq_result}, 
             'prob': 100
         })
     

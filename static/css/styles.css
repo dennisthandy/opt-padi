@@ -1,0 +1,166 @@
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-green: #3FC070;
+    --color-dark-green: #4eb14e;
+    --color-light: #d8ffd8;
+    --color-dark: #002700;
+}
+
+body {
+    font-family: sans-serif;
+    padding-bottom: 4rem;
+}
+
+/* header */
+.header {
+    padding: .75rem 1rem;
+    position: relative;
+}
+
+/* navigation */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-dark);
+}
+
+.nav > .nav__list.hidden {
+    display: none;
+}
+
+.nav__brand {
+    order: 1;
+}
+
+.nav__icon--menu {
+    order: 2;
+}
+
+.nav__list {
+    display: grid;
+    place-content: start;
+    gap: 1rem;
+}
+
+.nav__item {
+    list-style: none;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: var(--color-dark);
+}
+
+.nav__link.active {
+    color: var(--color-dark-green);
+}
+
+/* navigation mobile */
+.nav--mobile {
+    align-items: flex-start;
+    background-color: var(--color-light);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    min-height: 100vh;
+    padding: .75rem 1rem;
+}
+
+.nav--mobile.hidden {
+    display: none;
+}
+
+.nav--mobile > .nav__list {
+    order: 1;
+}
+
+.nav--mobile > .nav__icon--close {
+    order: 2;
+}
+
+/* banner */
+.banner__img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.container {
+    padding: .75rem 1rem;
+    color: var(--color-dark);
+}
+
+/* media 768px */
+@media screen and (min-width: 768px) {
+    .header {
+        padding: 1rem 4rem;
+    }
+
+    .nav__title {
+        font-size: 20px;
+    }
+
+    .nav__icon--menu {
+        display: none;
+    }
+
+    .nav > .nav__list.hidden {
+        order: 2;
+        display: grid;
+        grid-auto-flow: column;
+        place-content: start;
+        gap: .75rem;
+    }
+
+    .banner__img {
+        height: 20rem;
+    }
+
+    .container {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+}
+
+/* media 1024 */
+@media screen and (min-width: 1024px) {
+    .header {
+        padding: 1.5rem 6rem;
+    }
+
+    .nav > .nav__list.hidden { 
+        gap: 1rem;
+    }
+
+    .container {
+        max-width: 860px;
+    }
+}
+
+/* media 1280 */
+@media screen and (min-width: 1280px) {
+    .header {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    .container {
+        max-width: 1180px;
+    }
+}
+
+@media screen and (min-width: 1281px) {
+    .header {
+        padding-left: 11rem;
+        padding-right: 11rem;
+    }
+}

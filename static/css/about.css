@@ -1,0 +1,9 @@
+.heading {
+    font-size: 20px;
+    margin-bottom: 1rem;
+}
+
+.desc > span {
+    font-style: italic;
+    color: var(--color-green);
+}
