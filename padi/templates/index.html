@@ -2,21 +2,46 @@
 {% include './layout/header.html' %}
 
 <main class="container">
-    <!-- form -->
-    <h1 class="heading">Unggah Gambar Daun Padi.</h1>
-    <form method="POST" enctype="multipart/form-data" class="form">{% csrf_token %}
-        <div class="form__group">
-            <input class="form__input--file" type="file" name="gambar" id="gambar" required>
-            <label for="gambar" class="form__label">
-                <img src="{% static 'icons/upload.svg' %}" alt="upload" class="form__icon form__icon--upload">
-                <span>Pilih Gambar</span>
-            </label>
+    <div class="content">
+        <div class="content__form">
+            <!-- form -->
+            <h1 class="heading">Unggah Gambar Daun Padi.</h1>
+            <form method="POST" enctype="multipart/form-data" class="form">{% csrf_token %}
+                <div class="form__group">
+                    <input class="form__input--file" type="file" name="gambar" id="gambar" required>
+                    <label for="gambar" class="form__label">
+                        <img src="{% static 'icons/upload.svg' %}" alt="upload" class="form__icon form__icon--upload">
+                        <span>Pilih Gambar</span>
+                    </label>
+                </div>
+                <button type="submit" class="form__submit">
+                    <img src="{% static 'icons/search.svg' %}" alt="search" class="form__icon form__icon--search">
+                    <span>Identifikasi</span>
+                </button>
+            </form>
         </div>
-        <button type="submit" class="form__submit">
-            <img src="{% static 'icons/search.svg' %}" alt="search" class="form__icon form__icon--search">
-            <span>Identifikasi</span>
-        </button>
-    </form>
+        <div class="content__data">
+            <h2 class="heading">Unduh Sampel Dataset.</h2>
+            <div class="downloads">
+                <button id="BrownSpot" class="download download--brown-spot">
+                    <!-- <img src="{% static 'img/brownspot.png' %}" alt="Brown Spot" srcset="" class="download__img"> -->
+                    <span>Brown Spot</span>
+                </button>
+                <button id="Healthy" class="download download--healthy">
+                    <!-- <img src="{% static 'img/brownspot.png' %}" alt="Brown Spot" srcset="" class="download__img"> -->
+                    <span>Healthy</span>
+                </button>
+                <button id="Hispa" class="download download--hispa">
+                    <!-- <img src="{% static 'img/brownspot.png' %}" alt="Brown Spot" srcset="" class="download__img"> -->
+                    <span>Hispa</span>
+                </button>
+                <button id="LeafBlast" class="download download--leaf-blast">
+                    <!-- <img src="{% static 'img/brownspot.png' %}" alt="Brown Spot" srcset="" class="download__img"> -->
+                    <span>Leaf Blast</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- loading -->
     <p class="loading hidden">
@@ -52,11 +77,11 @@
             </div>
             <div class="result__item">
                 <p class="result__label">Nama OPT: </p>
-                <p class="result__data result__data--identifier"><strong>{{ label.cnn }}</strong></p>
+                <p class="result__data result__data--identifier"><strong>{{ label.cnn.name }}</strong></p>
             </div>
             <div class="result__item">
                 <p class="result__label">Deskripsi: </p>
-                <p class="result__data result__data--desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate nobis excepturi officia rem repudiandae voluptates perspiciatis? Sunt obcaecati dolore quia eaque. Sint ut provident minus officia molestiae aperiam, odit dignissimos.</p>
+                <p class="result__data result__data--desc">{{ label.cnn.desc }}</p>
             </div>
         </div>
         <div class="result__list">
@@ -68,11 +93,11 @@
             </div>
             <div class="result__item">
                 <p class="result__label">Nama OPT: </p>
-                <p class="result__data result__data--identifier"><strong>{{ label.lvq }}</strong></p>
+                <p class="result__data result__data--identifier"><strong>{{ label.lvq.name }}</strong></p>
             </div>
             <div class="result__item">
                 <p class="result__label">Deskripsi: </p>
-                <p class="result__data result__data--desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate nobis excepturi officia rem repudiandae voluptates perspiciatis? Sunt obcaecati dolore quia eaque. Sint ut provident minus officia molestiae aperiam, odit dignissimos.</p>
+                <p class="result__data result__data--desc">{{ label.lvq.desc }}</p>
             </div>
         </div>
     </div>
